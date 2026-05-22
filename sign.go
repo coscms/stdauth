@@ -19,6 +19,10 @@ import (
 //
 // ```
 func MakeSign(data url.Values, secret string) string {
-	h := sha256.Sum256([]byte(data.Encode() + `&secret=` + secret))
+	return SignString(data.Encode(), secret)
+}
+
+func SignString(str string, secret string) string {
+	h := sha256.Sum256([]byte(str + `&secret=` + secret))
 	return fmt.Sprintf("%x", h)
 }
