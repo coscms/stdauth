@@ -5,7 +5,6 @@ package stdauth
 
 import (
 	"bytes"
-	"crypto/sha256"
 	"fmt"
 	"io"
 	"log"
@@ -64,10 +63,7 @@ var DefaultAuthConfig = AuthConfig{
 	secretGetter: func(r *http.Request, appID string) (string, error) {
 		return "", fmt.Errorf("no secret getter configured for appID: %s", appID)
 	},
-	signMaker: func(data url.Values, secret string) string {
-		h := sha256.Sum256([]byte(data.Encode() + `&secret=` + secret))
-		return fmt.Sprintf("%x", h)
-	},
+	signMaker: MakeSign,
 }
 
 // SetSecretGetter sets the function that retrieves the secret key for an appID.
