@@ -1,4 +1,4 @@
-package stdauth_payment
+package stdauth
 
 import (
 	"net/http"

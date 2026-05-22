@@ -1,7 +1,7 @@
 // Package stdauth_payment implements HTTP request authentication via appID/sign/timestamp
 // using only Go standard library. It is a stdlib-only equivalent of the
 // github.com/coscms/webfront/middleware/mwapp package.
-package stdauth_payment
+package stdauth
 
 import (
 	"bytes"
